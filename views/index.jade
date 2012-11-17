@@ -3,13 +3,15 @@ extends layout
 block content
   h1= title
   form(action="/completetask", method="post")
-    table(class="table table-hover", border="1")
-      tr
-        td Name
-        td Category
-        td Date
-        td Complete
+    table(class="table table-hover")
+      thead
+        tr  
+          td Name
+          td Category
+          td Date
+          td Complete
       each task in tasks
+      tbody
         tr
           td #{task.itemName}
           td #{task.itemCategory}
@@ -22,13 +24,10 @@ block content
     input(type="submit", value="Update tasks")
   hr
   form(action="/addtask", method="post")
-    table(class="table table-hover", border="1") 
-      tr
-        td Item Name: 
-        td 
-          input(name="item[name]", type="textbox")
-      tr
-        td Item Category: 
-        td 
-          input(name="item[category]", type="textbox")
-    input(type="submit", value="Add item")
+    fieldset
+      legend= "New Task"
+      label= "Item Name:"
+        input(type="text", name="item[name]", placeholder="Type something…")
+      label= "Item Category:"
+        input(type="text", name="item[category]", placeholder="Type something…")
+      button(type="submit" class="btn" value="Add item")
