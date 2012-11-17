@@ -15,17 +15,17 @@ TaskList.prototype = {
 	},
 
 	addTask: function(req,res) {
-		var item = req.body.item;
-		newTask = new task();
-		newTask.itemName = item.name;
-		newTask.itemCategory = item.category;
-		netTask.save(function savedTask(err) {
-			if(err) {
-				throw err;
-			}
-		});
-		res.redirect('/');
-	},
+    var item = req.body.item;
+    newTask = new task();
+    newTask.itemName = item.name;
+    newTask.itemCategory = item.category;
+    newTask.save(function savedTask(err){
+      if(err) {
+        throw err;
+      }
+    });
+    res.redirect('/');
+  },
 
 	completeTask: function(req,res) {
 		var completedTasks = req.body;
